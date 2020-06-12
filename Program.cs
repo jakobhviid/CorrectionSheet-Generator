@@ -22,43 +22,56 @@ namespace CorrectionSheet_Generator {
             csv.Configuration.Encoding = Encoding.GetEncoding(encoding);
             var students = csv.GetRecords<DigitalEksamenModel>();
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "EVALUATION-DOCUMENT.md")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "evaluation.txt")))
             {
-                outputFile.WriteLine("# Generated Evaluation Sheet for the DM and VOP Course");
+                outputFile.WriteLine("|***************************************************************************");
+                outputFile.WriteLine("| Generated Evaluation Sheet for the DM and VOP Course");
+                outputFile.WriteLine("|***************************************************************************");
                 outputFile.WriteLine("");
                 
                 foreach (var student in students) {
-                    outputFile.WriteLine("## " + student.Name + " with #StudentNumber " + student.StudentNumber);
+                    outputFile.WriteLine("|***************************************************************************");
+                    outputFile.WriteLine("| #" +student.StudentNumber + " - " + student.Name);
+                    outputFile.WriteLine("|***************************************************************************");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("General Comments:");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### General Comments");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 1 - Subtask 2:");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 1 - Subtask 2:");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 1 - Subtask 3");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 2");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 3 - Subtask 1");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Assignment 1 - Subtask 2");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Assignment 3 - Subtask 2");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("### Final Assessment");
+                    outputFile.WriteLine("-----------------------------------");
+                    outputFile.WriteLine("DM - Final Assessment");
+                    outputFile.WriteLine("-----------");
                     outputFile.WriteLine("");
-                    outputFile.WriteLine("- Bulletpoint here");
                     outputFile.WriteLine("");
                 }
             }
