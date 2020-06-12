@@ -4,6 +4,6 @@ A commandline application for generating txt files used for correcting assignmen
 
 ## Instructions
 
-Run `dotnet run [yourfile.csv]`
+Run `dotnet run [yourfile.csv]`.
 
 If no file is specified sample-studerende.csv will be used instead.
