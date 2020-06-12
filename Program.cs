@@ -17,15 +17,15 @@ namespace CorrectionSheet_Generator {
 
             foreach (var student in students) {
                 outputFile.GenerateHeader("#" + student.StudentNumber + " - " + student.Name)
-                    .GenerateSubHeader("General Comments").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 1 - Subtask 1").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 1 - Subtask 2").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 1 - Subtask 3").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 2").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 3 - Subtask 1").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Assignment 3 - Subtask 2").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Final Assessment").GenerateNewLines(2)
-                    .GenerateSubHeader("DM - Feedback").GenerateNewLines(2);
+                    .GenerateSection("General Comments")
+                    .GenerateAssignment("Assignment 1 - Subtask 1", 12)
+                    .GenerateAssignment("Assignment 1 - Subtask 2", 12)
+                    .GenerateAssignment("Assignment 1 - Subtask 3", 6)
+                    .GenerateAssignment("Assignment 2", 12)
+                    .GenerateAssignment("Assignment 3 - Subtask 1", 6)
+                    .GenerateAssignment("Assignment 3 - Subtask 2", 6)
+                    .GenerateAssignment("Final Assessment", 60)
+                    .GenerateSection("Feedback");
             }
         }
     }

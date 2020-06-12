@@ -7,17 +7,33 @@ using System.Collections.Generic;
 
 namespace CorrectionSheet_Generator {
     static class Helpers {
-        public static StreamWriter GenerateSubHeader(this StreamWriter outputFile, string title) {
-            outputFile.WriteLine("-----------------------------------");
-            outputFile.WriteLine(title + ":");
-            outputFile.WriteLine("-----------");
-            return outputFile;
-        }
-
         public static StreamWriter GenerateHeader(this StreamWriter outputFile, string title) {
             outputFile.WriteLine("|***************************************************************************");
             outputFile.WriteLine("| " + title);
             outputFile.WriteLine("|***************************************************************************");
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateSubHeader(this StreamWriter outputFile, string title) {
+            outputFile.WriteLine("-----------------------------------");
+            outputFile.WriteLine("| " + title + ":");
+            outputFile.WriteLine("-----------");
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateGradingScale(this StreamWriter outputFile, int pointsPossible) {
+            outputFile.WriteLine("| Points Possible: " + pointsPossible + "; Points Given: ");
+            outputFile.WriteLine("----");
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, int pointsPossible) {
+            outputFile.GenerateSubHeader(title).GenerateGradingScale(pointsPossible).GenerateNewLines(3);
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateSection(this StreamWriter outputFile, string title) {
+            outputFile.GenerateSubHeader(title).GenerateNewLines(3);
             return outputFile;
         }
 
