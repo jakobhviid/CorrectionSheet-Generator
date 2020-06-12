@@ -21,19 +21,29 @@ namespace CorrectionSheet_Generator {
             return outputFile;
         }
 
-        public static StreamWriter GenerateGradingScale(this StreamWriter outputFile, int pointsPossible) {
-            outputFile.WriteLine("| Points Possible: " + pointsPossible + "; Points Given: ");
+        public static StreamWriter GenerateSubSubHeader(this StreamWriter outputFile, string title) {
+            outputFile.WriteLine("| " + title);
             outputFile.WriteLine("----");
             return outputFile;
         }
 
-        public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, int pointsPossible) {
-            outputFile.GenerateSubHeader(title).GenerateGradingScale(pointsPossible).GenerateNewLines(3);
+        public static StreamWriter GeneratePossiblePoints(this StreamWriter outputFile, string pointsPossible) {
+            outputFile.GenerateSubSubHeader("Points Possible: " + pointsPossible + "; Points Given: ");
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, string pointsPossible) {
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateNewLines(3);
             return outputFile;
         }
 
         public static StreamWriter GenerateSection(this StreamWriter outputFile, string title) {
             outputFile.GenerateSubHeader(title).GenerateNewLines(3);
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateFinalAssessment(this StreamWriter outputFile, string title, string pointsPossible, string scale) {
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateSubSubHeader(scale).GenerateNewLines(3);
             return outputFile;
         }
 
