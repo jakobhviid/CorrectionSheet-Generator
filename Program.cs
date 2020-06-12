@@ -9,7 +9,6 @@ namespace CorrectionSheet_Generator {
         static void Main(string[] args) {
             string encoding = "iso-8859-1"; // iso-8859-1
 
-            // https://joshclose.github.io/CsvHelper/getting-started
             var lines = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "sample-studerende.csv"), Encoding.GetEncoding(encoding)).ReadToEnd().Replace("\"", String.Empty).Replace("=", String.Empty);
             var preprocessedDataFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"));
             preprocessedDataFile.Write(lines);
@@ -22,6 +21,7 @@ namespace CorrectionSheet_Generator {
             csv.Configuration.Encoding = Encoding.GetEncoding(encoding);
             var students = csv.GetRecords<DigitalEksamenModel>();
 
+            //TODO: Write correct encoding based - Convert ISO-8859-1 to... UTF8?
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "evaluation.txt")))
             {
                 outputFile.WriteLine("|***************************************************************************");
