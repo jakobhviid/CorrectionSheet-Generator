@@ -23,8 +23,8 @@ namespace CorrectionSheet_Generator {
                     .GenerateAssignment("Assignment 1 - Subtask 3", "11 (A1=55)")
                     .GenerateAssignment("Assignment 2", "20")
                     .GenerateAssignment("Assignment 3 - Subtask 1", "10 (A3=20)")
-                    .GenerateAssignment("Assignment 3 - Subtask 2", "10 (A1=20)")
-                    .GenerateAssignment("Submission", "5")
+                    .GenerateAssignment("Assignment 3 - Subtask 2", "10 (A3=20)")
+                    .GenerateAssignment("Submission", "5", "5")
                     .GenerateFinalAssessment("Final Assessment", "100", "Grading Guide: 12 = 93-100%; 10 = 79-93%; 7 = 61-79%; 4 = 46-61%; 2 = 40-46%; 00 = 10-40%; -3 = 0-10%;");
             }
         }

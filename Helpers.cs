@@ -32,8 +32,18 @@ namespace CorrectionSheet_Generator {
             return outputFile;
         }
 
+        public static StreamWriter GeneratePossiblePoints(this StreamWriter outputFile, string pointsPossible, string pointsGiven) {
+            outputFile.GenerateSubSubHeader("Points Possible: " + pointsPossible + "; Points Given: " + pointsGiven);
+            return outputFile;
+        }
+
         public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, string pointsPossible) {
             outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateNewLines(3);
+            return outputFile;
+        }
+
+        public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, string pointsPossible, string pointsGiven) {
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible,pointsGiven).GenerateNewLines(3);
             return outputFile;
         }
 
