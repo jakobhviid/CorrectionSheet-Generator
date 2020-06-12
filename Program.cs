@@ -9,7 +9,7 @@ namespace CorrectionSheet_Generator {
         static void Main(string[] args) {
             string encoding = "iso-8859-1"; // iso-8859-1
 
-            var lines = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "sample-studerende.csv"), Encoding.GetEncoding(encoding)).ReadToEnd().Replace("\"", String.Empty).Replace("=", String.Empty);
+            var lines = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "studerende.csv"), Encoding.GetEncoding(encoding)).ReadToEnd().Replace("\"", String.Empty).Replace("=", String.Empty);
             var preprocessedDataFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"));
             preprocessedDataFile.Write(lines);
             preprocessedDataFile.Close();
@@ -35,7 +35,8 @@ namespace CorrectionSheet_Generator {
                         .GenerateSubHeader("DM - Assignment 2").GenerateNewLines(2)
                         .GenerateSubHeader("DM - Assignment 3 - Subtask 1").GenerateNewLines(2)
                         .GenerateSubHeader("DM - Assignment 3 - Subtask 2").GenerateNewLines(2)
-                        .GenerateSubHeader("DM - Final Assessment").GenerateNewLines(2);
+                        .GenerateSubHeader("DM - Final Assessment").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Feedback").GenerateNewLines(2);
                 }
             }
         }
