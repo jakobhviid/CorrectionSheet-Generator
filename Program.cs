@@ -24,55 +24,18 @@ namespace CorrectionSheet_Generator {
             //TODO: Write correct encoding based - Convert ISO-8859-1 to... UTF8?
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "evaluation.txt")))
             {
-                outputFile.WriteLine("|***************************************************************************");
-                outputFile.WriteLine("| Generated Evaluation Sheet for the DM and VOP Course");
-                outputFile.WriteLine("|***************************************************************************");
-                outputFile.WriteLine("");
+                outputFile.GenerateHeader("Generated Evaluation Sheet for the DM and VOP Course").GenerateNewLines(1);
                 
                 foreach (var student in students) {
-                    outputFile.WriteLine("|***************************************************************************");
-                    outputFile.WriteLine("| #" +student.StudentNumber + " - " + student.Name);
-                    outputFile.WriteLine("|***************************************************************************");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("General Comments:");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 1 - Subtask 2:");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 1 - Subtask 2:");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 1 - Subtask 3");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 2");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 3 - Subtask 1");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Assignment 3 - Subtask 2");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("-----------------------------------");
-                    outputFile.WriteLine("DM - Final Assessment");
-                    outputFile.WriteLine("-----------");
-                    outputFile.WriteLine("");
-                    outputFile.WriteLine("");
+                    outputFile.GenerateHeader("#" +student.StudentNumber + " - " + student.Name)
+                        .GenerateSubHeader("General Comments").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 1 - Subtask 1").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 1 - Subtask 2").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 1 - Subtask 3").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 2").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 3 - Subtask 1").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Assignment 3 - Subtask 2").GenerateNewLines(2)
+                        .GenerateSubHeader("DM - Final Assessment").GenerateNewLines(2);
                 }
             }
         }
