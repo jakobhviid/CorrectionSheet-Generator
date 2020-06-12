@@ -3,9 +3,10 @@ using System;
 using System.Globalization;
 using System.IO;
 using CsvHelper;
+using System.Collections.Generic;
 
 namespace CorrectionSheet_Generator {
-    static class StreamWriterHelpers {
+    static class Helpers {
         public static StreamWriter GenerateSubHeader(this StreamWriter outputFile, string title) {
             outputFile.WriteLine("-----------------------------------");
             outputFile.WriteLine(title + ":");
@@ -26,6 +27,22 @@ namespace CorrectionSheet_Generator {
                 outputFile.WriteLine("");
             }
             return outputFile;
+        }
+
+        public static void PreprocessCSV(string csvFile, string encoding){
+            var lines = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), csvFile), Encoding.GetEncoding(encoding)).ReadToEnd().Replace("\"", String.Empty).Replace("=", String.Empty);
+            var preprocessedDataFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"));
+            preprocessedDataFile.Write(lines);
+            preprocessedDataFile.Close();
+        }
+
+        public static IEnumerable<DigitalEksamenModel> ReadCSVFile (string encoding) {
+            var reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"), Encoding.GetEncoding(encoding));
+            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            csv.Configuration.MissingFieldFound = null;
+            csv.Configuration.Delimiter = ";";
+            csv.Configuration.Encoding = Encoding.GetEncoding(encoding);
+            return csv.GetRecords<DigitalEksamenModel>();
         }
     }
 }

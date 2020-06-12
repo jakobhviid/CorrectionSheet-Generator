@@ -1,32 +1,14 @@
 ﻿using System.Linq;
-using System.Text;
-using System;
-using System.Globalization;
 using System.IO;
-using CsvHelper;
 
 namespace CorrectionSheet_Generator {
     class Program {
         static void Main(string[] args) {
-            string encoding = "iso-8859-1"; // iso-8859-15 or iso-8859-1
-            string csvfile = "sample-studerende.csv";
-            if (args.Count() > 0 && !string.IsNullOrEmpty(args[0])){
-                csvfile = args[0];
-            }
-
-            //preprocessing non standard csv file
-            var lines = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), csvfile), Encoding.GetEncoding(encoding)).ReadToEnd().Replace("\"", String.Empty).Replace("=", String.Empty);
-            var preprocessedDataFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"));
-            preprocessedDataFile.Write(lines);
-            preprocessedDataFile.Close();
-
-            //reading the preprocessed file and changing it to a list of DigigtalEksamenModel
-            var reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "preprocessed.csv"), Encoding.GetEncoding(encoding));
-            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            csv.Configuration.MissingFieldFound = null;
-            csv.Configuration.Delimiter = ";";
-            csv.Configuration.Encoding = Encoding.GetEncoding(encoding);
-            var students = csv.GetRecords<DigitalEksamenModel>();
+            var encoding = "iso-8859-1"; // iso-8859-15 or iso-8859-1
+            var csvFile = "sample-studerende.csv";
+            if (args.Count() > 0 && !string.IsNullOrEmpty(args[0])) csvFile = args[0]; //if args is set, use it instead.
+            Helpers.PreprocessCSV(csvFile, encoding); //preprocessing non standard csv file 
+            var students = Helpers.ReadCSVFile(encoding); //reading preprocessed data to list of DigitalEksamenModel
 
             //writing the correction sheet for all the students
             //TODO: Write correct encoding based - Convert ISO-8859-1 to... UTF8?
