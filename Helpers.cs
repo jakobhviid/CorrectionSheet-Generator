@@ -38,12 +38,12 @@ namespace CorrectionSheet_Generator {
         }
 
         public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, string pointsPossible) {
-            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateNewLines(3);
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateNewLines(1);
             return outputFile;
         }
 
         public static StreamWriter GenerateAssignment(this StreamWriter outputFile, string title, string pointsPossible, string pointsGiven) {
-            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible,pointsGiven).GenerateNewLines(3);
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible,pointsGiven).GenerateNewLines(1);
             return outputFile;
         }
 
@@ -53,7 +53,7 @@ namespace CorrectionSheet_Generator {
         }
 
         public static StreamWriter GenerateFinalAssessment(this StreamWriter outputFile, string title, string pointsPossible, string scale) {
-            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateSubSubHeader(scale).GenerateNewLines(3);
+            outputFile.GenerateSubHeader(title).GeneratePossiblePoints(pointsPossible).GenerateSubSubHeader(scale).GenerateNewLines(1);
             return outputFile;
         }
 
